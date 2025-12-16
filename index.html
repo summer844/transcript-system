@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript Request | YISS/WAY </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yonsei-blue: #003876;
+            --yonsei-light-blue: #0057b8;
+            --accent-gold: #c4a962;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+            --success-green: #10b981;
+            --error-red: #ef4444;
+            --warning-orange: #f59e0b;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e8f4fc 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+
+        .header { text-align: center; margin-bottom: 24px; }
+        .logo-area { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; }
+        .logo-img { height: 60px; width: auto; }
+        .header h1 { font-size: 22px; font-weight: 700; color: var(--yonsei-blue); margin-bottom: 4px; }
+        .header .subtitle { font-size: 14px; color: var(--text-secondary); }
+
+        .info-box { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow-md); }
+        .info-box h3 { font-size: 15px; font-weight: 600; color: var(--yonsei-blue); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-box p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
+        .info-box ul { font-size: 13px; color: var(--text-secondary); padding-left: 20px; margin-bottom: 12px; }
+        .info-box li { margin-bottom: 6px; }
+
+        .soft-copy-section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: var(--shadow-md); }
+        .soft-copy-section h3 { font-size: 18px; font-weight: 600; color: var(--yonsei-blue); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .free-badge { background: var(--success-green); color: white; font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+        .paid-badge { background: var(--yonsei-light-blue); color: white; font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+        .soft-copy-intro { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border: 1px solid var(--success-green); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; font-size: 14px; color: #065f46; display: none; }
+        .soft-copy-intro.visible { display: block; }
+
+        .method-card { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 16px; overflow: hidden; }
+        .method-card:last-child { margin-bottom: 0; }
+        .method-header { background: #f8fafc; padding: 14px 16px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .method-header-content h4 { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .method-header-content p { font-size: 12px; color: var(--text-muted); margin: 0; }
+        .method-body { padding: 16px; }
+
+        .step-list { list-style: none; padding: 0; margin: 0; counter-reset: step-counter; }
+        .step-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 14px; color: var(--text-secondary); }
+        .step-list li:last-child { margin-bottom: 0; }
+        .step-list li::before { content: counter(step-counter); counter-increment: step-counter; position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: var(--yonsei-blue); color: white; border-radius: 50%; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+        .step-path { background: #f0f7ff; padding: 8px 12px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 13px; color: var(--yonsei-blue); display: inline-block; margin: 4px 0; }
+        .step-note { background: #fffbeb; border: 1px solid #fbbf24; border-radius: 6px; padding: 10px 12px; margin: 12px 0; font-size: 13px; color: #92400e; }
+        .step-note a { color: #d97706; font-weight: 600; }
+        .step-image { margin: 12px 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); }
+        .step-image img { width: 100%; height: auto; display: block; }
+        .step-image-caption { background: #f8fafc; padding: 8px 12px; font-size: 12px; color: var(--text-muted); text-align: center; }
+
+        .card { background: var(--bg-white); border-radius: 16px; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .card-header { background: var(--yonsei-blue); color: white; padding: 20px 24px; }
+        .card-header h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+        .card-header p { font-size: 13px; opacity: 0.9; }
+        .card-body { padding: 24px; }
+
+        .price-calculator { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fc 100%); border: 2px solid var(--yonsei-light-blue); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+        .price-calculator-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+        .price-calculator-header svg { color: var(--yonsei-blue); }
+        .price-calculator-header h3 { font-size: 16px; font-weight: 600; color: var(--yonsei-blue); }
+
+        .delivery-type-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        .delivery-type-option { position: relative; }
+        .delivery-type-option input { position: absolute; opacity: 0; }
+        .delivery-type-option label { display: block; padding: 16px; border: 2px solid var(--border-color); border-radius: 10px; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .delivery-type-option input:checked + label { border-color: var(--yonsei-blue); background: white; box-shadow: var(--shadow-md); }
+        .delivery-type-option label:hover { border-color: var(--yonsei-light-blue); }
+        .delivery-type-option .type-icon { font-size: 24px; margin-bottom: 8px; }
+        .delivery-type-option .type-name { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .delivery-type-option .type-price { font-size: 18px; font-weight: 700; color: var(--yonsei-blue); }
+        .delivery-type-option .type-note { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+        .quantity-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border-color); }
+        .quantity-row:last-child { border-bottom: none; }
+        .quantity-label { font-size: 14px; color: var(--text-secondary); }
+        .quantity-controls { display: flex; align-items: center; gap: 12px; }
+        .qty-btn { width: 32px; height: 32px; border-radius: 6px; border: 2px solid var(--yonsei-blue); background: white; color: var(--yonsei-blue); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+        .qty-btn:hover:not(:disabled) { background: var(--yonsei-blue); color: white; }
+        .qty-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .qty-display { font-size: 18px; font-weight: 700; color: var(--yonsei-blue); min-width: 30px; text-align: center; }
+
+        .price-display { background: var(--yonsei-blue); color: white; border-radius: 10px; padding: 16px; margin-top: 16px; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-size: 14px; opacity: 0.9; }
+        .price-row.total { border-top: 1px solid rgba(255,255,255,0.3); margin-top: 8px; padding-top: 12px; font-size: 16px; font-weight: 600; opacity: 1; }
+        .price-row .amount { font-weight: 600; }
+        .total-amount { font-size: 28px; font-weight: 700; }
+        .price-note { font-size: 11px; opacity: 0.8; margin-top: 8px; text-align: center; }
+        .price-breakdown { background: rgba(255,255,255,0.1); border-radius: 6px; padding: 10px 12px; margin-top: 12px; font-size: 12px; }
+        .price-breakdown-title { font-weight: 600; margin-bottom: 6px; }
+
+        .form-section { margin-bottom: 24px; }
+        .form-section-title { font-size: 14px; font-weight: 600; color: var(--yonsei-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        .form-group label .required { color: var(--error-red); }
+        .form-control { width: 100%; padding: 12px 14px; font-size: 15px; font-family: inherit; border: 2px solid var(--border-color); border-radius: 8px; transition: all 0.2s; background: white; }
+        .form-control:focus { outline: none; border-color: var(--yonsei-light-blue); box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.1); }
+        .form-control::placeholder { color: var(--text-muted); }
+        select.form-control { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 40px; }
+        textarea.form-control { resize: vertical; min-height: 80px; }
+        .form-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .delivery-block { border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; margin-bottom: 16px; background: #fafbfc; }
+        .delivery-block:last-child { margin-bottom: 0; }
+        .delivery-block-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .delivery-block-header h4 { font-size: 14px; font-weight: 600; color: var(--yonsei-blue); margin: 0; }
+
+        .payment-method-group { margin-bottom: 20px; }
+        .payment-option { position: relative; margin-bottom: 12px; }
+        .payment-option input { position: absolute; opacity: 0; }
+        .payment-option label { display: block; padding: 16px; border: 2px solid var(--border-color); border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+        .payment-option input:checked + label { border-color: var(--yonsei-blue); background: #f0f7ff; }
+        .payment-option label:hover { border-color: var(--yonsei-light-blue); }
+        .payment-option-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .payment-option-header .icon { width: 40px; height: 40px; background: var(--yonsei-blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 14px; }
+        .payment-option-header h4 { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+        .payment-option-body { font-size: 13px; color: var(--text-secondary); padding-left: 52px; }
+
+        .flywire-details, .wire-details { display: none; margin-top: 16px; padding: 16px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border-color); }
+        .flywire-details.visible, .wire-details.visible { display: block; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .flywire-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .flywire-link { display: block; padding: 14px; background: var(--yonsei-blue); color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: 600; font-size: 14px; transition: all 0.2s; }
+        .flywire-link:hover { background: var(--yonsei-light-blue); transform: translateY(-2px); }
+        .flywire-link .program-name { display: block; font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
+
+        .verify-section { display: flex; gap: 8px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+        .verify-btn { padding: 10px 16px; background: var(--yonsei-light-blue); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s; }
+        .verify-btn:hover:not(:disabled) { background: var(--yonsei-blue); }
+        .verify-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .verify-status { font-size: 13px; display: flex; align-items: center; gap: 4px; }
+
+        .bank-info { background: white; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+        .bank-info h5 { font-size: 14px; font-weight: 600; color: var(--yonsei-blue); margin-bottom: 12px; }
+        .bank-info-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+        .bank-info-row:last-child { border-bottom: none; }
+        .bank-info-row .label { color: var(--text-muted); }
+        .bank-info-row .value { font-weight: 500; color: var(--text-primary); }
+        .bank-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+        .bank-tab { flex: 1; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: white; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .bank-tab:hover { border-color: var(--yonsei-light-blue); }
+        .bank-tab.active { border-color: var(--yonsei-blue); background: var(--yonsei-blue); color: white; }
+        .bank-content { display: none; }
+        .bank-content.active { display: block; }
+
+        .file-upload { border: 2px dashed var(--border-color); border-radius: 8px; padding: 24px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .file-upload:hover { border-color: var(--yonsei-light-blue); background: #f8fafc; }
+        .file-upload.has-file { border-color: var(--success-green); background: #ecfdf5; }
+        .file-upload-icon { font-size: 32px; margin-bottom: 8px; }
+        .file-upload-text { font-size: 14px; color: var(--text-secondary); margin-bottom: 4px; }
+        .file-upload-hint { font-size: 12px; color: var(--text-muted); }
+        .file-upload input { display: none; }
+        .file-preview { display: none; margin-top: 12px; padding: 12px; background: white; border-radius: 6px; border: 1px solid var(--border-color); }
+        .file-preview.visible { display: flex; align-items: center; gap: 12px; }
+        .file-preview img { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; }
+        .file-info { flex: 1; }
+        .file-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+        .file-size { font-size: 12px; color: var(--text-muted); }
+        .remove-file { background: var(--error-red); color: white; border: none; border-radius: 4px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+
+        .warning-box { background: #fff7ed; border: 1px solid var(--warning-orange); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+        .warning-box h4 { font-size: 14px; font-weight: 600; color: #c2410c; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .warning-box ul { font-size: 13px; color: #9a3412; padding-left: 20px; margin: 0; }
+        .warning-box li { margin-bottom: 4px; }
+
+        .consent-section { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+        .consent-section h4 { font-size: 14px; font-weight: 600; color: var(--yonsei-blue); margin-bottom: 12px; }
+        .consent-content { max-height: 200px; overflow-y: auto; background: white; border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; margin-bottom: 12px; font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+        .consent-content h5 { font-size: 13px; font-weight: 600; color: var(--text-primary); margin: 12px 0 6px 0; }
+        .consent-content h5:first-child { margin-top: 0; }
+        .consent-checkbox { display: flex; align-items: flex-start; gap: 10px; }
+        .consent-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; accent-color: var(--yonsei-blue); }
+        .consent-checkbox label { font-size: 14px; color: var(--text-primary); cursor: pointer; }
+        .consent-checkbox label .required { color: var(--error-red); }
+
+        .submit-btn { width: 100%; padding: 16px 24px; background: var(--yonsei-blue); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .submit-btn:hover:not(:disabled) { background: var(--yonsei-light-blue); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .footer { text-align: center; margin-top: 24px; padding: 16px; font-size: 12px; color: var(--text-muted); }
+        .footer a { color: var(--yonsei-blue); text-decoration: none; }
+
+        .alert { padding: 16px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .alert.success { background: #ecfdf5; border: 1px solid var(--success-green); color: #065f46; }
+        .alert.error { background: #fef2f2; border: 1px solid var(--error-red); color: #991b1b; }
+        .alert.visible { display: block; animation: slideDown 0.3s ease; }
+
+        .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s linear infinite; margin-right: 8px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .bilingual { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        .collapsible-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 4px 0; }
+        .collapsible-header:hover h3 { color: var(--yonsei-light-blue); }
+        .collapse-icon { font-size: 20px; color: var(--yonsei-blue); transition: transform 0.3s ease; }
+        .collapse-icon.rotated { transform: rotate(180deg); }
+        .collapsible-content { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+        .collapsible-content.expanded { max-height: 2000px; }
+
+        /* Success Modal */
+.success-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.success-modal.visible {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.success-modal-content {
+    background: white;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--success-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 40px;
+}
+.success-modal h2 {
+    color: var(--success-green);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+.success-modal p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+.success-modal .email-note {
+    background: #f0f7ff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--yonsei-blue);
+}
+.success-modal-btn {
+    padding: 14px 32px;
+    background: var(--yonsei-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+}
+.success-modal-btn:hover {
+    background: var(--yonsei-light-blue);
+}
+
+        @media (max-width: 480px) {
+            .form-row { grid-template-columns: 1fr; }
+            .delivery-type-group { grid-template-columns: 1fr; }
+            .flywire-links { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-area">
+                <img src="https://winter.yonsei.ac.kr/_res/winter/img/images.png" alt="Yonsei University" class="logo-img">
+            </div>
+            <h1>YISS/WAY</h1>
+            <p class="subtitle">Transcript Request Service</p>
+        </header>
+
+        <!-- Soft Copy Section -->
+        <div class="soft-copy-section">
+            <div class="collapsible-header" onclick="toggleSection('softCopyContent', this)">
+                <h3>📄 Soft Copy (Digital Transcript)</h3>
+                <span class="collapse-icon rotated">▼</span>
+            </div>
+            
+            <div id="softCopyIntro" class="soft-copy-intro" style="margin-top: 16px;">
+                YISS/WAY alumni can obtain official transcripts digitally through the Yonsei Portal. Please review the options below before requesting a hard copy.
+            </div>
+
+            <div id="softCopyContent" class="collapsible-content">
+                <div class="method-card">
+                    <div class="method-header">
+                        <div class="method-header-content">
+                            <h4>Option 1: Download PDF Transcript</h4>
+                            <p>For personal records or to email directly to institutions</p>
+                        </div>
+                        <span class="free-badge">FREE</span>
+                    </div>
+                    <div class="method-body">
+                        <ol class="step-list">
+                            <li>
+                                Log in to the <a href="https://portal.yonsei.ac.kr" target="_blank">Yonsei Portal</a>
+                                <div class="step-path">Academic Information System → Grades → Exchange Student Grades</div>
+                            </li>
+                            <li>
+                                Your transcript will be displayed. You can download it as a PDF file.
+                                <div class="step-image">
+                                    <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_3.png" alt="Exchange Student Grades Screen">
+                                    <div class="step-image-caption">Exchange Student Grades menu location</div>
+                                </div>
+                            </li>
+                        </ol>
+                        <div class="step-note">
+                            <strong>Forgot your password?</strong> Please refer to <a href="https://summer.yonsei.ac.kr" target="_blank">"RESET PW for SAY/YISS/WAY"</a> in the menu bar on our website.
+                            <div class="step-image" style="margin-top: 10px; margin-bottom: 0;">
+                                <img src="https://summer.yonsei.ac.kr/_res/summer/img/Yonsei_PW_reset.png" alt="Password Reset Guide">
+                                <div class="step-image-caption">Password reset option location</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <div class="method-header-content">
+                            <h4>Option 2: Send Electronic Transcript to an Institution</h4>
+                            <p>For official submissions requiring verified digital documents</p>
+                        </div>
+                        <span class="paid-badge">₩3,000</span>
+                    </div>
+                    <div class="method-body">
+                        <ol class="step-list">
+                            <li>
+                                Log in to the <a href="https://portal.yonsei.ac.kr" target="_blank">Yonsei Portal</a>
+                                <div class="step-path">Online Transcripts & Certificates</div>
+                            </li>
+                            <li>Click on <strong>Electronic Certificate (PDF File)</strong> menu, then click <strong>"Order"</strong></li>
+                            <li>Select Degree: <strong>"Department of International Exchange"</strong> and click <strong>"Next"</strong></li>
+                            <li>Go to <strong>Order Box</strong>, click <strong>Apply</strong>, and complete the payment for the issuance fee (₩3,000).</li>
+                        </ol>
+                        <div class="step-note">
+                            <strong>Forgot your password?</strong> Please refer to <a href="https://summer.yonsei.ac.kr" target="_blank">"RESET PW for SAY/YISS/WAY"</a> in the menu bar on our website.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hard Copy Request Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2>📬 Hard Copy Request</h2>
+                <p>Request physical transcripts mailed to your address</p>
+            </div>
+
+            <div class="card-body">
+                <!-- Alerts -->
+                <div id="successAlert" class="alert success">
+                    <strong>✅ Request Submitted Successfully!</strong><br>
+                    Your transcript request has been received. Processing will begin once payment is confirmed.
+                </div>
+                <div id="errorAlert" class="alert error">
+                    <strong>❌ Submission Failed</strong><br>
+                    <span id="errorMessage">Please try again or contact us.</span>
+                </div>
+
+                <!-- Price Calculator -->
+                <div class="price-calculator">
+                    <div class="price-calculator-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        <h3>Calculate Your Fee</h3>
+                    </div>
+                    
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Select delivery destination type:</p>
+                    <div class="delivery-type-group">
+                        <div class="delivery-type-option">
+                            <input type="radio" id="deliveryDomestic" name="deliveryType" value="domestic">
+                            <label for="deliveryDomestic">
+                                <div class="type-icon">🇰🇷</div>
+                                <div class="type-name">Domestic (Korea)</div>
+                                <div class="type-name bilingual"></div>
+                                <div class="type-price">₩4,000</div>
+                                <div class="type-note">base fee</div>
+                            </label>
+                        </div>
+                        <div class="delivery-type-option">
+                            <input type="radio" id="deliveryInternational" name="deliveryType" value="international" checked>
+                            <label for="deliveryInternational">
+                                <div class="type-icon">🌍</div>
+                                <div class="type-name">International (DHL)</div>
+                                <div class="type-name bilingual"></div>
+                                <div class="type-price">₩50,000</div>
+                                <div class="type-note">base fee</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quantity-row">
+                        <span class="quantity-label">Number of Copies</span>
+                        <div class="quantity-controls">
+                            <button type="button" class="qty-btn" id="copiesMinus" disabled>−</button>
+                            <span class="qty-display" id="copiesDisplay">1</span>
+                            <button type="button" class="qty-btn" id="copiesPlus">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-row">
+                        <span class="quantity-label">Number of Destinations</span>
+                        <div class="quantity-controls">
+                            <button type="button" class="qty-btn" id="destMinus" disabled>−</button>
+                            <span class="qty-display" id="destDisplay">1</span>
+                            <button type="button" class="qty-btn" id="destPlus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="price-display">
+                        <div class="price-row">
+                            <span>Delivery Type</span>
+                            <span class="amount" id="deliveryTypeText">International (DHL)</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Base Fee × Destinations</span>
+                            <span class="amount" id="baseFeeCalc">₩50,000 × 1</span>
+                        </div>
+                        <div class="price-row" id="additionalCopiesRow" style="display: none;">
+                            <span>Additional Copies Fee</span>
+                            <span class="amount" id="additionalCopiesFee">+ ₩0</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>Total Amount</span>
+                            <span class="total-amount" id="totalPrice">₩50,000</span>
+                        </div>
+                        <div class="price-breakdown" id="priceBreakdown">
+                            <div class="price-breakdown-title">💡 How it's calculated:</div>
+                            <span id="breakdownText">Base fee ₩50,000 × 1 destination = ₩50,000</span>
+                        </div>
+                        <p class="price-note">
+                            Additional copies to the same address: +₩1,000 per copy
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form id="transcriptForm">
+                    <input type="hidden" id="numCopies" name="numCopies" value="1">
+                    <input type="hidden" id="numDestinations" name="numDestinations" value="1">
+                    <input type="hidden" id="deliveryTypeValue" name="deliveryType" value="international">
+                    <input type="hidden" id="totalAmount" name="totalAmount" value="50000">
+
+                    <!-- Student Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Student Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" required placeholder="John">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" required placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentId">Student ID<span class="required">*</span></label>
+                            <input type="text" id="studentId" name="studentId" class="form-control" required placeholder="e.g., 2024123456">
+                            <p class="form-hint"><strong>YYYY: Program Year</strong><br>
+                            Please enter your 10-digit YISS or WAY student ID number.<br>
+                            If you do not remember the exact number, you may fill in the first four digits with your program year and use 000000 for the remainder (e.g. 2018000000).<br> 
+                            Or you can contact us at summer@yonsei.ac.kr (YISS) or iwinter@yonsei.ac.kr (WAY) for further assistance.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="your.email@example.com">
+                            <p class="form-hint">We'll send confirmation and updates to this email</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="program">Program <span class="required">*</span></label>
+                            <select id="program" name="program" class="form-control" required>
+                                <option value="">Select your program</option>
+                                <option value="YISS">YISS (Yonsei International Summer School)</option>
+                                <option value="WAY">WAY (Winter Abroad at Yonsei)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Delivery Information</h3>
+                        <div id="deliveryContainer">
+                            <!-- Delivery blocks will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Payment Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Payment Information</h3>
+                        
+                        <div class="payment-method-group">
+                            <div class="payment-option">
+                                <input type="radio" id="paymentFlywire" name="paymentMethod" value="flywire" checked>
+                                <label for="paymentFlywire">
+                                    <div class="payment-option-header">
+                                        <div class="icon">FW</div>
+                                        <h4>Flywire Payment</h4>
+                                    </div>
+                                    <div class="payment-option-body">
+                                        Recommended for international payments. Pay in your local currency with various payment methods.
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="payment-option">
+                                <input type="radio" id="paymentWire" name="paymentMethod" value="wire">
+                                <label for="paymentWire">
+                                    <div class="payment-option-header">
+                                        <div class="icon">🏦</div>
+                                        <h4>Bank Transfer</h4>
+                                    </div>
+                                    <div class="payment-option-body">
+                                        Direct bank transfer in KRW. Recommended for domestic payments.
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Flywire Details -->
+                        <div id="flywireDetails" class="flywire-details visible">
+                            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+                                Click the button below to make your payment, then enter the Transfer Reference:
+                            </p>
+                            <div class="flywire-links">
+                                <a href="https://payment.flywire.com/pay/payment?recipient=YNT" target="_blank" class="flywire-link" id="flywireLinkYISS">
+                                    <span class="program-name">YISS Program</span>
+                                    Pay with Flywire →
+                                </a>
+                                <a href="https://payment.flywire.com/pay/payment?recipient=YNY" target="_blank" class="flywire-link" id="flywireLinkWAY">
+                                    <span class="program-name">WAY Program</span>
+                                    Pay with Flywire →
+                                </a>
+                            </div>
+                            <div class="form-group" style="margin-top: 16px; margin-bottom: 0;">
+                                <label for="transferRef">Flywire Transfer Reference <span class="required">*</span></label>
+                                <input type="text" id="transferRef" name="transferRef" class="form-control" placeholder="e.g., FWXXXXXXXXX" required>
+                                <p class="form-hint">You'll receive this reference after completing Flywire payment</p>
+                                <div class="verify-section">
+                                    <button type="button" id="verifyRefBtn" class="verify-btn" onclick="verifyTransferRef()">
+                                        Verify Payment
+                                    </button>
+                                    <span id="verifyStatus" class="verify-status"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wire Transfer Details -->
+                        <div id="wireDetails" class="wire-details">
+                            <div class="bank-tabs">
+                                <button type="button" class="bank-tab active" data-bank="yiss">YISS Account</button>
+                                <button type="button" class="bank-tab" data-bank="way">WAY Account</button>
+                            </div>
+                            
+                            <div id="bankYISS" class="bank-content active">
+                                <div class="bank-info">
+                                    <h5>YISS Program Bank Account</h5>
+                                    <div class="bank-info-row">
+                                        <span class="label">Bank</span>
+                                        <span class="value">Woori Bank (우리은행)</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Account Number</span>
+                                        <span class="value">126-000335-18-925</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Account Holder</span>
+                                        <span class="value">Yonsei Univ. (학)연세대학교</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Swift Code</span>
+                                        <span class="value">HVBKKRSE</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Business Registration No.</span>
+                                        <span class="value">110-82-00282</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="bankWAY" class="bank-content">
+                                <div class="bank-info">
+                                    <h5>WAY Program Bank Account</h5>
+                                    <div class="bank-info-row">
+                                        <span class="label">Bank (은행)</span>
+                                        <span class="value">Woori Bank (우리은행)</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Account Number (계좌번호)</span>
+                                        <span class="value">126-000368-18-431</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Account Holder (예금주)</span>
+                                        <span class="value">Yonsei Univ. (학)연세대학교</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Swift Code</span>
+                                        <span class="value">HVBKKRSE</span>
+                                    </div>
+                                    <div class="bank-info-row">
+                                        <span class="label">Business Registration No.</span>
+                                        <span class="value">110-82-00282</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="depositorName">Depositor Name<span class="required">*</span></label>
+                                <input type="text" id="depositorName" name="depositorName" class="form-control" placeholder="Name used for bank transfer">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label>Payment Proof Screenshot <span class="required">*</span></label>
+                                <div class="file-upload" id="fileUpload" onclick="document.getElementById('paymentProof').click()">
+                                    <div class="file-upload-icon">📎</div>
+                                    <div class="file-upload-text">Click to upload or drag and drop</div>
+                                    <div class="file-upload-hint">JPG, PNG or PDF (max 5MB)</div>
+                                    <input type="file" id="paymentProof" name="paymentProof" accept=".jpg,.jpeg,.png,.pdf">
+                                </div>
+                                <div id="filePreview" class="file-preview">
+                                    <img id="previewImage" src="" alt="Preview">
+                                    <div class="file-info">
+                                        <div class="file-name" id="fileName"></div>
+                                        <div class="file-size" id="fileSize"></div>
+                                    </div>
+                                    <button type="button" class="remove-file" id="removeFile">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Additional Notes</h3>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="notes">Special Requests (Optional)</label>
+                            <textarea id="notes" name="notes" class="form-control" placeholder="Any special instructions or requests..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Warning Box -->
+                    <div class="warning-box">
+                        <h4>⚠️ Important Notice</h4>
+                        <ul>
+                            <li>Transcript issuance takes <strong>5-7 business days</strong></li>
+                            <li>International shipping takes an additional <strong>1-2 weeks</strong></li>
+                            <li>Please request <strong>at least 2 weeks before</strong> your deadline</li>
+                            <li><strong>Refunds are not available</strong> for overpayment or cancellation</li>
+                            <li>You are responsible for providing accurate delivery information</li>
+                        </ul>
+                    </div>
+
+                    <!-- Privacy Consent -->
+                    <div class="consent-section">
+                        <h4>📋 Personal Information Collection and Use Agreement</h4>
+                        <div class="consent-content">
+                            <p>YISS & WAY values the protection and privacy of the applicant's personal information in accordance with the Personal Information Protection Act. Please carefully read the information below.</p>
+                            
+                            <h5>1. Purpose of Collection and Use of Personal Information</h5>
+                            <p>Yonsei International Summer School and Winter Abroad at Yonsei ("YISS & WAY") will access and process your personal information to issue your academic transcript. This includes the necessary data collection for personal identification and academic administration purposes.</p>
+                            
+                            <h5>2. Items to be Collected</h5>
+                            <p>Name, Gender, Nationality, Contact number, E-mail address, Date of Birth, Home Institution, Mailing Address.</p>
+                            
+                            <h5>3. Retention and Use Period of Personal Information</h5>
+                            <p>Collected personal information will be kept and used semi-permanently for the purposes of issuing transcripts, certificates, and academic affairs.</p>
+                            
+                            <h5>4. Right to Disagree and its Disadvantage</h5>
+                            <p>You have the right to disagree with the collection and use of personal information. However, if you disagree, you will be restricted from receiving a transcript from YISS and WAY.</p>
+                        </div>
+                        <div class="consent-checkbox">
+                            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                            <label for="privacyConsent">I agree to the terms regarding the collection and use of personal information. <span class="required">*</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span>Submit Request</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                <strong>Yonsei University Office of International Affairs</strong><br>
+                📧 <a href="mailto:summer@yonsei.ac.kr">summer@yonsei.ac.kr</a><br>
+                🌐 <a href="https://summer.yonsei.ac.kr" target="_blank">summer.yonsei.ac.kr</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            googleScriptUrl: 'https://script.google.com/macros/s/AKfycbzfLLxA5rrk3cDE45WRgfYMnIkr8hhX1st7WoudMYPbp1ZC5dV3x6sERGpIdaV9TbrA/exec',
+            prices: {
+                domestic: 4000,
+                international: 50000
+            },
+            additionalCopyFee: 1000,
+            minQuantity: 1,
+            maxCopies: 20,
+            maxDestinations: 10
+        };
+
+        // State
+        const state = {
+            deliveryType: 'international',
+            copies: 1,
+            destinations: 1,
+            paymentMethod: 'flywire',
+            uploadedFile: null,
+            paymentVerified: false
+        };
+
+        // DOM Elements
+        const elements = {
+            deliveryDomestic: document.getElementById('deliveryDomestic'),
+            deliveryInternational: document.getElementById('deliveryInternational'),
+            copiesDisplay: document.getElementById('copiesDisplay'),
+            destDisplay: document.getElementById('destDisplay'),
+            copiesMinus: document.getElementById('copiesMinus'),
+            copiesPlus: document.getElementById('copiesPlus'),
+            destMinus: document.getElementById('destMinus'),
+            destPlus: document.getElementById('destPlus'),
+            deliveryTypeText: document.getElementById('deliveryTypeText'),
+            baseFeeCalc: document.getElementById('baseFeeCalc'),
+            additionalCopiesRow: document.getElementById('additionalCopiesRow'),
+            additionalCopiesFee: document.getElementById('additionalCopiesFee'),
+            totalPrice: document.getElementById('totalPrice'),
+            breakdownText: document.getElementById('breakdownText'),
+            numCopies: document.getElementById('numCopies'),
+            numDestinations: document.getElementById('numDestinations'),
+            deliveryTypeValue: document.getElementById('deliveryTypeValue'),
+            totalAmount: document.getElementById('totalAmount'),
+            deliveryContainer: document.getElementById('deliveryContainer'),
+            paymentFlywire: document.getElementById('paymentFlywire'),
+            paymentWire: document.getElementById('paymentWire'),
+            flywireDetails: document.getElementById('flywireDetails'),
+            wireDetails: document.getElementById('wireDetails'),
+            transferRef: document.getElementById('transferRef'),
+            depositorName: document.getElementById('depositorName'),
+            bankTabs: document.querySelectorAll('.bank-tab'),
+            bankYISS: document.getElementById('bankYISS'),
+            bankWAY: document.getElementById('bankWAY'),
+            fileUpload: document.getElementById('fileUpload'),
+            paymentProof: document.getElementById('paymentProof'),
+            filePreview: document.getElementById('filePreview'),
+            previewImage: document.getElementById('previewImage'),
+            fileName: document.getElementById('fileName'),
+            fileSize: document.getElementById('fileSize'),
+            removeFile: document.getElementById('removeFile'),
+            form: document.getElementById('transcriptForm'),
+            submitBtn: document.getElementById('submitBtn'),
+            successAlert: document.getElementById('successAlert'),
+            errorAlert: document.getElementById('errorAlert'),
+            errorMessage: document.getElementById('errorMessage'),
+            verifyRefBtn: document.getElementById('verifyRefBtn'),
+            verifyStatus: document.getElementById('verifyStatus'),
+            privacyConsent: document.getElementById('privacyConsent')
+        };
+
+        // Format currency
+        function formatCurrency(amount) {
+            return '₩' + amount.toLocaleString('ko-KR');
+        }
+
+        // Calculate total price
+        function calculateTotal() {
+            const basePrice = CONFIG.prices[state.deliveryType];
+            const baseFee = basePrice * state.destinations;
+            const additionalCopies = Math.max(0, state.copies - state.destinations);
+            const additionalFee = additionalCopies * CONFIG.additionalCopyFee;
+            return {
+                baseFee: baseFee,
+                additionalFee: additionalFee,
+                total: baseFee + additionalFee,
+                additionalCopies: additionalCopies
+            };
+        }
+
+        // Create delivery block HTML
+        function createDeliveryBlock(index) {
+            return `
+            <div class="delivery-block" data-index="${index}">
+                <div class="delivery-block-header">
+                    <h4>📍 Destination ${index}</h4>
+                </div>
+                <div class="form-group">
+                    <label>Recipient Name <span class="required">*</span></label>
+                    <input type="text" name="recipientName_${index}" class="form-control" required placeholder="Full name of recipient">
+                </div>
+                <div class="form-group">
+                    <label>Full Mailing Address <span class="required">*</span></label>
+                    <textarea name="mailingAddress_${index}" class="form-control" required placeholder="Street address, City, State/Province, Postal code, Country"></textarea>
+                    <p class="form-hint">Please include all details including postal/ZIP code and country</p>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>Contact Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="phoneNumber_${index}" class="form-control" required placeholder="+1-234-567-8900">
+                    <p class="form-hint">Include country code for international numbers</p>
+                </div>
+            </div>`;
+        }
+
+        // Update delivery blocks based on destination count
+        function updateDeliveryBlocks() {
+            const container = elements.deliveryContainer;
+            const currentBlocks = container.querySelectorAll('.delivery-block').length;
+            
+            if (state.destinations > currentBlocks) {
+                for (let i = currentBlocks + 1; i <= state.destinations; i++) {
+                    container.insertAdjacentHTML('beforeend', createDeliveryBlock(i));
+                }
+            } else if (state.destinations < currentBlocks) {
+                for (let i = currentBlocks; i > state.destinations; i--) {
+                    const block = container.querySelector(`[data-index="${i}"]`);
+                    if (block) block.remove();
+                }
+            }
+        }
+
+        // Update price display
+        function updatePrice() {
+            const basePrice = CONFIG.prices[state.deliveryType];
+            const calc = calculateTotal();
+            
+            elements.copiesDisplay.textContent = state.copies;
+            elements.destDisplay.textContent = state.destinations;
+            elements.deliveryTypeText.textContent = state.deliveryType === 'domestic' 
+                ? 'Domestic (Korea)' 
+                : 'International (DHL)';
+            
+            elements.baseFeeCalc.textContent = formatCurrency(basePrice) + ' × ' + state.destinations;
+            
+            if (calc.additionalCopies > 0) {
+                elements.additionalCopiesRow.style.display = 'flex';
+                elements.additionalCopiesFee.textContent = '+ ' + formatCurrency(calc.additionalFee) + ' (' + calc.additionalCopies + ' extra)';
+            } else {
+                elements.additionalCopiesRow.style.display = 'none';
+            }
+            
+            elements.totalPrice.textContent = formatCurrency(calc.total);
+            
+            let breakdown = `Base fee ${formatCurrency(basePrice)} × ${state.destinations} destination${state.destinations > 1 ? 's' : ''} = ${formatCurrency(calc.baseFee)}`;
+            if (calc.additionalCopies > 0) {
+                breakdown += `\n+ ${calc.additionalCopies} additional cop${calc.additionalCopies > 1 ? 'ies' : 'y'} × ${formatCurrency(CONFIG.additionalCopyFee)} = ${formatCurrency(calc.additionalFee)}`;
+            }
+            elements.breakdownText.textContent = breakdown;
+            
+            elements.numCopies.value = state.copies;
+            elements.numDestinations.value = state.destinations;
+            elements.deliveryTypeValue.value = state.deliveryType;
+            elements.totalAmount.value = calc.total;
+            
+            elements.copiesMinus.disabled = state.copies <= CONFIG.minQuantity;
+            elements.copiesPlus.disabled = state.copies >= CONFIG.maxCopies;
+            elements.destMinus.disabled = state.destinations <= CONFIG.minQuantity;
+            elements.destPlus.disabled = state.destinations >= CONFIG.maxDestinations;
+
+            updateDeliveryBlocks();
+        }
+
+        // Toggle collapsible section
+        function toggleSection(contentId, headerElement) {
+            const content = document.getElementById(contentId);
+            const icon = headerElement.querySelector('.collapse-icon');
+            const intro = document.getElementById('softCopyIntro');
+            
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotated');
+            
+            if (intro) {
+                intro.classList.toggle('visible');
+            }
+        }
+
+        // Verify Transfer Reference
+        async function verifyTransferRef() {
+            const transferRef = elements.transferRef.value.trim();
+            const program = document.getElementById('program').value;
+            const btn = elements.verifyRefBtn;
+            const status = elements.verifyStatus;
+            
+            if (!transferRef) {
+                status.innerHTML = '<span style="color: var(--error-red);">❌ Please enter Transfer Reference</span>';
+                return;
+            }
+            
+            if (!program) {
+                status.innerHTML = '<span style="color: var(--error-red);">❌ Please select program first</span>';
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.textContent = 'Verifying...';
+            status.innerHTML = '<span style="color: var(--text-muted);">⏳ Checking...</span>';
+            
+            try {
+                const url = CONFIG.googleScriptUrl + '?action=verify&ref=' + encodeURIComponent(transferRef) + '&program=' + encodeURIComponent(program);
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result.verified) {
+                    status.innerHTML = `<span style="color: var(--success-green);">✅ Verified - ${result.amount} ${result.currency}</span>`;
+                    state.paymentVerified = true;
+                } else {
+                    status.innerHTML = `<span style="color: var(--error-red);">❌ ${result.message || 'Payment not found'}</span>`;
+                    state.paymentVerified = false;
+                }
+            } catch (error) {
+                console.error('Verification error:', error);
+                status.innerHTML = '<span style="color: var(--warning-orange);">⚠️ Could not verify automatically. We will verify manually.</span>';
+            }
+            
+            btn.disabled = false;
+            btn.textContent = 'Verify Payment';
+        }
+
+        // Event Listeners
+        elements.deliveryDomestic.addEventListener('change', () => {
+            state.deliveryType = 'domestic';
+            updatePrice();
+        });
+
+        elements.deliveryInternational.addEventListener('change', () => {
+            state.deliveryType = 'international';
+            updatePrice();
+        });
+
+        elements.copiesMinus.addEventListener('click', () => {
+            if (state.copies > CONFIG.minQuantity) {
+                state.copies--;
+                updatePrice();
+            }
+        });
+
+        elements.copiesPlus.addEventListener('click', () => {
+            if (state.copies < CONFIG.maxCopies) {
+                state.copies++;
+                updatePrice();
+            }
+        });
+
+        elements.destMinus.addEventListener('click', () => {
+            if (state.destinations > CONFIG.minQuantity) {
+                state.destinations--;
+                updatePrice();
+            }
+        });
+
+        elements.destPlus.addEventListener('click', () => {
+            if (state.destinations < CONFIG.maxDestinations) {
+                state.destinations++;
+                updatePrice();
+            }
+        });
+
+        // Payment method toggle
+        function updatePaymentMethod() {
+            if (elements.paymentFlywire.checked) {
+                state.paymentMethod = 'flywire';
+                elements.flywireDetails.classList.add('visible');
+                elements.wireDetails.classList.remove('visible');
+                elements.transferRef.required = true;
+                elements.depositorName.required = false;
+            } else {
+                state.paymentMethod = 'wire';
+                elements.flywireDetails.classList.remove('visible');
+                elements.wireDetails.classList.add('visible');
+                elements.transferRef.required = false;
+                elements.depositorName.required = true;
+            }
+        }
+
+        elements.paymentFlywire.addEventListener('change', updatePaymentMethod);
+        elements.paymentWire.addEventListener('change', updatePaymentMethod);
+
+        // Bank tabs
+        elements.bankTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                elements.bankTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const bank = tab.dataset.bank;
+                elements.bankYISS.classList.toggle('active', bank === 'yiss');
+                elements.bankWAY.classList.toggle('active', bank === 'way');
+            });
+        });
+
+        // File upload
+        elements.paymentProof.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    e.target.value = '';
+                    return;
+                }
+                
+                state.uploadedFile = file;
+                elements.fileUpload.classList.add('has-file');
+                elements.fileName.textContent = file.name;
+                elements.fileSize.textContent = (file.size / 1024).toFixed(1) + ' KB';
+                
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        elements.previewImage.src = e.target.result;
+                        elements.previewImage.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    elements.previewImage.style.display = 'none';
+                }
+                
+                elements.filePreview.classList.add('visible');
+            }
+        });
+
+        elements.removeFile.addEventListener('click', () => {
+            state.uploadedFile = null;
+            elements.paymentProof.value = '';
+            elements.fileUpload.classList.remove('has-file');
+            elements.filePreview.classList.remove('visible');
+        });
+
+        // Collect delivery data
+        function collectDeliveryData() {
+            const deliveries = [];
+            for (let i = 1; i <= state.destinations; i++) {
+                deliveries.push({
+                    recipientName: document.querySelector(`[name="recipientName_${i}"]`).value.trim(),
+                    mailingAddress: document.querySelector(`[name="mailingAddress_${i}"]`).value.trim(),
+                    phoneNumber: document.querySelector(`[name="phoneNumber_${i}"]`).value.trim()
+                });
+            }
+            return deliveries;
+        }
+
+        // Form submission
+        elements.form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Check privacy consent
+            if (!elements.privacyConsent.checked) {
+                alert('Please agree to the personal information collection terms to proceed.');
+                elements.privacyConsent.focus();
+                return;
+            }
+            
+            if (state.paymentMethod === 'wire' && !state.uploadedFile) {
+                alert('Please upload payment proof for wire transfer');
+                return;
+            }
+            
+            elements.successAlert.classList.remove('visible');
+            elements.errorAlert.classList.remove('visible');
+            
+            elements.submitBtn.disabled = true;
+            elements.submitBtn.innerHTML = '<span class="spinner"></span>Submitting...';
+
+            const calc = calculateTotal();
+
+            const formData = {
+                timestamp: new Date().toISOString(),
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                studentId: document.getElementById('studentId').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                program: document.getElementById('program').value,
+                deliveryType: state.deliveryType,
+                numCopies: state.copies,
+                numDestinations: state.destinations,
+                baseFee: calc.baseFee,
+                additionalCopiesFee: calc.additionalFee,
+                totalAmount: calc.total,
+                deliveries: collectDeliveryData(),
+                paymentMethod: state.paymentMethod,
+                transferRef: elements.transferRef.value.trim(),
+                depositorName: elements.depositorName.value.trim(),
+                paymentVerified: state.paymentVerified,
+                privacyConsent: true,
+                notes: document.getElementById('notes').value.trim()
+            };
+
+            if (state.uploadedFile) {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    formData.paymentProofBase64 = e.target.result;
+                    formData.paymentProofName = state.uploadedFile.name;
+                    await submitForm(formData);
+                };
+                reader.readAsDataURL(state.uploadedFile);
+            } else {
+                await submitForm(formData);
+            }
+        });
+
+        async function submitForm(formData) {
+            try {
+                const response = await fetch(CONFIG.googleScriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                document.getElementById('successModal').classList.add('visible');
+                elements.form.reset();
+                state.copies = 1;
+                state.destinations = 1;
+                state.deliveryType = 'international';
+                state.uploadedFile = null;
+                state.paymentVerified = false;
+                elements.deliveryInternational.checked = true;
+                elements.paymentFlywire.checked = true;
+                elements.verifyStatus.innerHTML = '';
+                updatePrice();
+                updatePaymentMethod();
+                elements.fileUpload.classList.remove('has-file');
+                elements.filePreview.classList.remove('visible');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                elements.errorMessage.textContent = error.message || 'Please try again or contact us.';
+                elements.errorAlert.classList.add('visible');
+            } finally {
+                elements.submitBtn.disabled = false;
+                elements.submitBtn.innerHTML = '<span>Submit Request</span>';
+            }
+        }
+
+        function closeSuccessModal() {
+        document.getElementById('successModal').classList.remove('visible');
+        }
+
+        // Initialize
+        updatePrice();
+        updatePaymentMethod();
+    </script>
+
+    <!-- Success Modal -->
+<div id="successModal" class="success-modal">
+    <div class="success-modal-content">
+        <div class="success-icon">✓</div>
+        <h2>Request Submitted!</h2>
+        <h3 style="color: var(--text-primary); font-size: 18px; margin-bottom: 16px;"></h3>
+        <p>Your transcript request has been successfully received.</p>
+        <p>We will process your request once payment is confirmed.</p>
+        <div class="email-note">
+            📧 A confirmation email has been sent to your email address.
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted);">Processing time: 5-7 business days</p>
+        <button class="success-modal-btn" onclick="closeSuccessModal()">Close</button>
+    </div>
+</div>
+</body>
+</html>
