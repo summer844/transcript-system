@@ -1163,41 +1163,82 @@
             }
         });
 
-        async function submitForm(formData) {
-            try {
-                const response = await fetch(CONFIG.googleScriptUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                document.getElementById('successModal').classList.add('visible');
-                elements.form.reset();
-                state.copies = 1;
-                state.destinations = 1;
-                state.deliveryType = 'international';
-                state.uploadedFile = null;
-                state.paymentVerified = false;
-                elements.deliveryInternational.checked = true;
-                elements.paymentFlywire.checked = true;
-                elements.verifyStatus.innerHTML = '';
-                updatePrice();
-                updatePaymentMethod();
-                elements.fileUpload.classList.remove('has-file');
-                elements.filePreview.classList.remove('visible');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            } catch (error) {
-                console.error('Submission error:', error);
-                elements.errorMessage.textContent = error.message || 'Please try again or contact us.';
-                elements.errorAlert.classList.add('visible');
-            } finally {
-                elements.submitBtn.disabled = false;
-                elements.submitBtn.innerHTML = '<span>Submit Request</span>';
-            }
+            async function submitForm(formData) {
+        try {
+            // 방법 1: iframe을 통한 제출 (가장 안정적)
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = CONFIG.googleScriptUrl;
+            form.target = 'hidden_iframe';
+            
+            // formData를 hidden input으로 변환
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'data';
+            input.value = JSON.stringify(formData);
+            form.appendChild(input);
+            
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+            
+            // 제출 후 처리 (iframe은 응답을 받지 못하므로 일정 시간 후 성공 처리)
+            // 실제 저장 여부는 이메일 수신으로 확인
+            setTimeout(() => {
+                showSuccessModal();
+                resetForm();
+            }, 1500);
+    
+        } catch (error) {
+            console.error('Submission error:', error);
+            showError(error.message || 'Please try again or contact us.');
         }
+    }
+    
+    function showSuccessModal() {
+        const modal = document.getElementById('successModal');
+        if (modal) {
+            modal.classList.add('visible');
+        } else {
+            // fallback: alert 사용
+            alert('✅ Request submitted successfully!\n\nA confirmation email will be sent to your email address.');
+        }
+    }
+    
+    function showError(message) {
+        const errorAlert = document.getElementById('errorAlert');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        if (errorAlert && errorMessage) {
+            errorMessage.textContent = message;
+            errorAlert.classList.add('visible');
+        } else {
+            alert('❌ Submission failed: ' + message);
+        }
+        
+        elements.submitBtn.disabled = false;
+        elements.submitBtn.innerHTML = '<span>Submit Request</span>';
+    }
+    
+    function resetForm() {
+        elements.form.reset();
+        state.copies = 1;
+        state.destinations = 1;
+        state.deliveryType = 'international';
+        state.uploadedFile = null;
+        state.paymentVerified = false;
+        elements.deliveryInternational.checked = true;
+        elements.paymentFlywire.checked = true;
+        if (elements.verifyStatus) elements.verifyStatus.innerHTML = '';
+        updatePrice();
+        updatePaymentMethod();
+        elements.fileUpload.classList.remove('has-file');
+        elements.filePreview.classList.remove('visible');
+        elements.submitBtn.disabled = false;
+        elements.submitBtn.innerHTML = '<span>Submit Request</span>';
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
         function closeSuccessModal() {
         document.getElementById('successModal').classList.remove('visible');
@@ -1223,5 +1264,6 @@
         <button class="success-modal-btn" onclick="closeSuccessModal()">Close</button>
     </div>
 </div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
