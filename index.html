@@ -1037,38 +1037,39 @@
             state.deliveryType = 'domestic';
             updatePrice();
         });
-
+        
         elements.deliveryInternational.addEventListener('change', () => {
             state.deliveryType = 'international';
             updatePrice();
         });
-
+        
+        // ★ copiesMinus - destinations 이하로 못 내림
         elements.copiesMinus.addEventListener('click', () => {
-            if (state.copies > CONFIG.minQuantity) {
+            if (state.copies > state.destinations) {
                 state.copies--;
                 updatePrice();
             }
         });
-
+        
         elements.copiesPlus.addEventListener('click', () => {
             if (state.copies < CONFIG.maxCopies) {
                 state.copies++;
                 updatePrice();
             }
         });
-
-        elements.copiesMinus.addEventListener('click', () => {
-            // ★ copies는 destinations보다 작아질 수 없음
-            if (state.copies > state.destinations) {
-                state.copies--;
+        
+        // ★ destMinus 추가!
+        elements.destMinus.addEventListener('click', () => {
+            if (state.destinations > CONFIG.minQuantity) {
+                state.destinations--;
                 updatePrice();
             }
         });
-
+        
+        // ★ destPlus - copies도 같이 증가
         elements.destPlus.addEventListener('click', () => {
             if (state.destinations < CONFIG.maxDestinations) {
                 state.destinations++;
-                // ★ destinations가 증가하면 copies도 최소 그만큼 되어야 함
                 if (state.copies < state.destinations) {
                     state.copies = state.destinations;
                 }
