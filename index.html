@@ -930,7 +930,12 @@
         }
 
         // Update price display
-        function updatePrice() {
+                function updatePrice() {
+            // ★ copies가 destinations보다 적으면 destinations 수량으로 맞추기
+            if (state.copies < state.destinations) {
+                state.copies = state.destinations;
+            }
+            
             const basePrice = CONFIG.prices[state.deliveryType];
             const calc = calculateTotal();
             
@@ -962,11 +967,12 @@
             elements.deliveryTypeValue.value = state.deliveryType;
             elements.totalAmount.value = calc.total;
             
-            elements.copiesMinus.disabled = state.copies <= CONFIG.minQuantity;
+            // ★ copies 최소값을 destinations로 설정
+            elements.copiesMinus.disabled = state.copies <= state.destinations;
             elements.copiesPlus.disabled = state.copies >= CONFIG.maxCopies;
             elements.destMinus.disabled = state.destinations <= CONFIG.minQuantity;
             elements.destPlus.disabled = state.destinations >= CONFIG.maxDestinations;
-
+        
             updateDeliveryBlocks();
         }
 
@@ -1051,9 +1057,10 @@
             }
         });
 
-        elements.destMinus.addEventListener('click', () => {
-            if (state.destinations > CONFIG.minQuantity) {
-                state.destinations--;
+        elements.copiesMinus.addEventListener('click', () => {
+            // ★ copies는 destinations보다 작아질 수 없음
+            if (state.copies > state.destinations) {
+                state.copies--;
                 updatePrice();
             }
         });
@@ -1061,6 +1068,10 @@
         elements.destPlus.addEventListener('click', () => {
             if (state.destinations < CONFIG.maxDestinations) {
                 state.destinations++;
+                // ★ destinations가 증가하면 copies도 최소 그만큼 되어야 함
+                if (state.copies < state.destinations) {
+                    state.copies = state.destinations;
+                }
                 updatePrice();
             }
         });
