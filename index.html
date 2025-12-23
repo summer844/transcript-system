@@ -1413,9 +1413,21 @@
         updatePaymentMethod();
     </script>
 
-    <!-- Success Modal -->
+   <!-- Success Modal -->
 <div id="successModal" class="success-modal">
     <div class="success-modal-content">
         <div class="success-icon">✓</div>
         <h2>Request Submitted!</h2>
-        <h3 style="color: var(--text-primary); fo
+        <h3 style="color: var(--text-primary); font-size: 18px; margin-bottom: 16px;"></h3>
+        <p>Your transcript request has been successfully received.</p>
+        <p>We will process your request once payment is confirmed.</p>
+        <div class="email-note">
+            📧 A confirmation email has been sent to your email address.
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted);">Processing time: 5-7 business days</p>
+        <button class="success-modal-btn" onclick="closeSuccessModal()">Close</button>
+    </div>
+</div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+</body>
+</html>
