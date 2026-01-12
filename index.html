@@ -406,6 +406,16 @@
                             <input type="email" id="email" name="email" class="form-control" required placeholder="your.email@example.com">
                             <p class="form-hint">We'll send confirmation and updates to this email</p>
                         </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="homeInstitution">Home Institution <span class="required">*</span></label>
+                                <input type="text" id="homeInstitution" name="homeInstitution" class="form-control" required placeholder="e.g., University of California, Berkeley">
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Delivery Information -->
@@ -458,11 +468,11 @@
                                 Click the button below to make your payment, then enter the Payment ID:
                             </p>
                             <div class="flywire-links">
-                                <a href="https://payment.flywire.com/pay/payment?recipient=YNT" target="_blank" class="flywire-link">
+                                <a href="https://payment.flywire.com/pay/payment?recipient=YOS" target="_blank" class="flywire-link">
                                     <span class="program-name">YISS Program</span>
                                     Pay with Flywire →
                                 </a>
-                                <a href="https://payment.flywire.com/pay/payment?recipient=YNY" target="_blank" class="flywire-link">
+                                <a href="https://payment.flywire.com/pay/payment?recipient=YON" target="_blank" class="flywire-link">
                                     <span class="program-name">WAY Program</span>
                                     Pay with Flywire →
                                 </a>
@@ -1093,6 +1103,8 @@
                 lastName: document.getElementById('lastName').value.trim(),
                 studentId: document.getElementById('studentId').value.trim(),
                 email: document.getElementById('email').value.trim(),
+                dateOfBirth: document.getElementById('dateOfBirth').value,
+                homeInstitution: document.getElementById('homeInstitution').value.trim(),
                 program: document.getElementById('program').value,
                 deliveryType: state.deliveryType,
                 numCopies: state.copies,
