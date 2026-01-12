@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transcript Request | YISS/WAY </title>
+    <title>Hard Copy Transcript Request | YISS/WAY</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -38,49 +38,49 @@
 
         .container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
 
+        /* Header */
         .header { text-align: center; margin-bottom: 24px; }
         .logo-area { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; }
         .logo-img { height: 60px; width: auto; }
         .header h1 { font-size: 22px; font-weight: 700; color: var(--yonsei-blue); margin-bottom: 4px; }
         .header .subtitle { font-size: 14px; color: var(--text-secondary); }
 
-        .info-box { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color);}
-        .info-box h3 { font-size: 15px; font-weight: 600; color: var(--yonsei-blue); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .info-box p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
-        .info-box ul { font-size: 13px; color: var(--text-secondary); padding-left: 20px; margin-bottom: 12px; }
-        .info-box li { margin-bottom: 6px; }
+        /* Soft Copy Link Banner */
+        .softcopy-banner {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid var(--success-green);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .softcopy-banner-text { font-size: 14px; color: #065f46; }
+        .softcopy-banner-text strong { display: block; font-size: 15px; margin-bottom: 2px; }
+        .softcopy-banner a {
+            background: var(--success-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .softcopy-banner a:hover { background: #059669; }
 
-        .soft-copy-section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color);}
-        .soft-copy-section h3 { font-size: 18px; font-weight: 600; color: var(--yonsei-blue); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .free-badge { background: var(--success-green); color: white; font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
-        .paid-badge { background: var(--yonsei-light-blue); color: white; font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
-        .soft-copy-intro { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border: 1px solid var(--success-green); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; font-size: 14px; color: #065f46; display: none; }
-        .soft-copy-intro.visible { display: block; }
-
-        .method-card { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 16px; overflow: hidden; }
-        .method-card:last-child { margin-bottom: 0; }
-        .method-header { background: #f8fafc; padding: 14px 16px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-        .method-header-content h4 { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-        .method-header-content p { font-size: 12px; color: var(--text-muted); margin: 0; }
-        .method-body { padding: 16px; }
-
-        .step-list { list-style: none; padding: 0; margin: 0; counter-reset: step-counter; }
-        .step-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 14px; color: var(--text-secondary); }
-        .step-list li:last-child { margin-bottom: 0; }
-        .step-list li::before { content: counter(step-counter); counter-increment: step-counter; position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: var(--yonsei-blue); color: white; border-radius: 50%; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
-        .step-path { background: #f0f7ff; padding: 8px 12px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 13px; color: var(--yonsei-blue); display: inline-block; margin: 4px 0; }
-        .step-note { background: #fffbeb; border: 1px solid #fbbf24; border-radius: 6px; padding: 10px 12px; margin: 12px 0; font-size: 13px; color: #92400e; }
-        .step-note a { color: #d97706; font-weight: 600; }
-        .step-image { margin: 12px 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); }
-        .step-image img { width: 100%; height: auto; display: block; }
-        .step-image-caption { background: #f8fafc; padding: 8px 12px; font-size: 12px; color: var(--text-muted); text-align: center; }
-
-        .card { background: var(--bg-white); border-radius: 16px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border-color);}
+        /* Card */
+        .card { background: var(--bg-white); border-radius: 16px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border-color); }
         .card-header { background: var(--yonsei-blue); color: white; padding: 20px 24px; }
         .card-header h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
         .card-header p { font-size: 13px; opacity: 0.9; }
         .card-body { padding: 24px; }
 
+        /* Price Calculator */
         .price-calculator { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fc 100%); border: 2px solid var(--yonsei-light-blue); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
         .price-calculator-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
         .price-calculator-header svg { color: var(--yonsei-blue); }
@@ -89,7 +89,7 @@
         .delivery-type-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
         .delivery-type-option { position: relative; }
         .delivery-type-option input { position: absolute; opacity: 0; }
-        .delivery-type-option label { display: block; padding: 16px; border: 2px solid var(--border-color); border-radius: 10px; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .delivery-type-option label { display: block; padding: 16px; border: 2px solid var(--border-color); border-radius: 10px; cursor: pointer; transition: all 0.2s; text-align: center; background: white; }
         .delivery-type-option input:checked + label { border-color: var(--yonsei-blue); background: white; box-shadow: var(--shadow-md); }
         .delivery-type-option label:hover { border-color: var(--yonsei-light-blue); }
         .delivery-type-option .type-icon { font-size: 24px; margin-bottom: 8px; }
@@ -112,9 +112,10 @@
         .price-row .amount { font-weight: 600; }
         .total-amount { font-size: 28px; font-weight: 700; }
         .price-note { font-size: 11px; opacity: 0.8; margin-top: 8px; text-align: center; }
-        .price-breakdown { background: rgba(255,255,255,0.1); border-radius: 6px; padding: 10px 12px; margin-top: 12px; font-size: 12px; }
+        .price-breakdown { background: rgba(255,255,255,0.1); border-radius: 6px; padding: 10px 12px; margin-top: 12px; font-size: 12px; white-space: pre-line; }
         .price-breakdown-title { font-weight: 600; margin-bottom: 6px; }
 
+        /* Form */
         .form-section { margin-bottom: 24px; }
         .form-section-title { font-size: 14px; font-weight: 600; color: var(--yonsei-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); }
         .form-group { margin-bottom: 16px; }
@@ -128,6 +129,13 @@
         .form-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
+        /* Delivery Block */
+        .copies-allocation { background: #e8f4fc; border: 1px solid var(--yonsei-light-blue); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .copies-allocation-label { font-size: 13px; color: var(--text-secondary); }
+        .copies-allocation-value { font-size: 15px; font-weight: 600; color: var(--yonsei-blue); }
+        .copies-allocation-value.warning { color: var(--error-red); }
+        .copies-allocation-value.success { color: var(--success-green); }
+
         .delivery-block { border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; margin-bottom: 16px; background: #fafbfc; }
         .delivery-block:last-child { margin-bottom: 0; }
         .delivery-block-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; }
@@ -135,12 +143,8 @@
         .dest-copies-selector { display: flex; align-items: center; gap: 8px; background: white; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); }
         .dest-copies-selector label { font-size: 12px; color: var(--text-secondary); margin: 0; white-space: nowrap; }
         .dest-copies-selector select { padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; font-weight: 600; color: var(--yonsei-blue); cursor: pointer; min-width: 50px; }
-        .copies-allocation { background: #e8f4fc; border: 1px solid var(--yonsei-light-blue); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-        .copies-allocation-label { font-size: 13px; color: var(--text-secondary); }
-        .copies-allocation-value { font-size: 15px; font-weight: 600; color: var(--yonsei-blue); }
-        .copies-allocation-value.warning { color: var(--error-red); }
-        .copies-allocation-value.success { color: var(--success-green); }
 
+        /* Payment */
         .payment-method-group { margin-bottom: 20px; }
         .payment-option { position: relative; margin-bottom: 12px; }
         .payment-option input { position: absolute; opacity: 0; }
@@ -161,12 +165,6 @@
         .flywire-link:hover { background: var(--yonsei-light-blue); transform: translateY(-2px); }
         .flywire-link .program-name { display: block; font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
 
-        .verify-section { display: flex; gap: 8px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
-        .verify-btn { padding: 10px 16px; background: var(--yonsei-light-blue); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s; }
-        .verify-btn:hover:not(:disabled) { background: var(--yonsei-blue); }
-        .verify-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .verify-status { font-size: 13px; display: flex; align-items: center; gap: 4px; }
-
         .bank-info { background: white; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
         .bank-info h5 { font-size: 14px; font-weight: 600; color: var(--yonsei-blue); margin-bottom: 12px; }
         .bank-info-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
@@ -180,6 +178,7 @@
         .bank-content { display: none; }
         .bank-content.active { display: block; }
 
+        /* File Upload */
         .file-upload { border: 2px dashed var(--border-color); border-radius: 8px; padding: 24px; text-align: center; cursor: pointer; transition: all 0.2s; }
         .file-upload:hover { border-color: var(--yonsei-light-blue); background: #f8fafc; }
         .file-upload.has-file { border-color: var(--success-green); background: #ecfdf5; }
@@ -195,6 +194,7 @@
         .file-size { font-size: 12px; color: var(--text-muted); }
         .remove-file { background: var(--error-red); color: white; border: none; border-radius: 4px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
 
+        /* Warning & Consent */
         .warning-box { background: #fff7ed; border: 1px solid var(--warning-orange); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
         .warning-box h4 { font-size: 14px; font-weight: 600; color: #c2410c; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
         .warning-box ul { font-size: 13px; color: #9a3412; padding-left: 20px; margin: 0; }
@@ -208,118 +208,43 @@
         .consent-checkbox { display: flex; align-items: flex-start; gap: 10px; }
         .consent-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; accent-color: var(--yonsei-blue); }
         .consent-checkbox label { font-size: 14px; color: var(--text-primary); cursor: pointer; }
-        .consent-checkbox label .required { color: var(--error-red); }
 
+        /* Submit Button */
         .submit-btn { width: 100%; padding: 16px 24px; background: var(--yonsei-blue); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .submit-btn:hover:not(:disabled) { background: var(--yonsei-light-blue); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        .footer { text-align: center; margin-top: 24px; padding: 16px; font-size: 12px; color: var(--text-muted); }
-        .footer a { color: var(--yonsei-blue); text-decoration: none; }
+        .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s linear infinite; margin-right: 8px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* Alerts */
         .alert { padding: 16px; border-radius: 8px; margin-bottom: 20px; display: none; }
         .alert.success { background: #ecfdf5; border: 1px solid var(--success-green); color: #065f46; }
         .alert.error { background: #fef2f2; border: 1px solid var(--error-red); color: #991b1b; }
         .alert.visible { display: block; animation: slideDown 0.3s ease; }
 
-        .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s linear infinite; margin-right: 8px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .bilingual { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-
-        .collapsible-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 4px 0; }
-        .collapsible-header:hover h3 { color: var(--yonsei-light-blue); }
-        .collapse-icon { font-size: 20px; color: var(--yonsei-blue); transition: transform 0.3s ease; }
-        .collapse-icon.rotated { transform: rotate(180deg); }
-        .collapsible-content { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
-        .collapsible-content.expanded { max-height: 8000px; }
+        /* Footer */
+        .footer { text-align: center; margin-top: 24px; padding: 16px; font-size: 12px; color: var(--text-muted); }
+        .footer a { color: var(--yonsei-blue); text-decoration: none; }
 
         /* Success Modal */
-.success-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-.success-modal.visible {
-    display: flex;
-    animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.success-modal-content {
-    background: white;
-    border-radius: 16px;
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-    padding: 40px 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s ease;
-}
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.success-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--success-green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 40px;
-}
-.success-modal h2 {
-    color: var(--success-green);
-    font-size: 24px;
-    margin-bottom: 12px;
-}
-.success-modal p {
-    color: var(--text-secondary);
-    font-size: 15px;
-    margin-bottom: 8px;
-    line-height: 1.6;
-}
-.success-modal .email-note {
-    background: #f0f7ff;
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin: 20px 0;
-    font-size: 14px;
-    color: var(--yonsei-blue);
-}
-.success-modal-btn {
-    padding: 14px 32px;
-    background: var(--yonsei-blue);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.2s;
-}
-.success-modal-btn:hover {
-    background: var(--yonsei-light-blue);
-}
+        .success-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .success-modal.visible { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .success-modal-content { background: white; border-radius: 16px; max-width: 500px; width: 100%; text-align: center; padding: 40px 30px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .success-icon { width: 80px; height: 80px; background: var(--success-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 40px; color: white; }
+        .success-modal h2 { color: var(--success-green); font-size: 24px; margin-bottom: 12px; }
+        .success-modal p { color: var(--text-secondary); font-size: 15px; margin-bottom: 8px; line-height: 1.6; }
+        .success-modal .email-note { background: #f0f7ff; padding: 12px 16px; border-radius: 8px; margin: 20px 0; font-size: 14px; color: var(--yonsei-blue); }
+        .success-modal-btn { padding: 14px 32px; background: var(--yonsei-blue); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: all 0.2s; }
+        .success-modal-btn:hover { background: var(--yonsei-light-blue); }
 
         @media (max-width: 480px) {
             .form-row { grid-template-columns: 1fr; }
             .delivery-type-group { grid-template-columns: 1fr; }
             .flywire-links { grid-template-columns: 1fr; }
+            .softcopy-banner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -331,131 +256,18 @@
                 <img src="https://summer.yonsei.ac.kr/_res/summer/img/Yonsei_Logo.png" alt="Yonsei University" class="logo-img">
             </div>
             <h1>YISS/WAY</h1>
-            <p class="subtitle">Transcript Request Service</p>
+            <p class="subtitle">📬 Hard Copy Transcript Request</p>
         </header>
 
-        <!-- Soft Copy Section -->
-        <div class="soft-copy-section">
-            <div class="collapsible-header" onclick="toggleSection('softCopyContent', this)">
-                <h3>📄 Soft Copy (Digital Transcript)</h3>
-                <span class="collapse-icon rotated">▼</span>
+        <!-- Soft Copy Link Banner -->
+        <div class="softcopy-banner">
+            <div class="softcopy-banner-text">
+                <strong>📄 Need a Digital Transcript?</strong>
+                Get your transcript via email or PDF download through the Yonsei Portal.
             </div>
-            
-            <div id="softCopyIntro" class="soft-copy-intro" style="margin-top: 16px;">
-                YISS/WAY alumni can obtain official transcripts digitally through the Yonsei Portal. Please review the options below before requesting a hard copy.
-            </div>
-
-            <div id="softCopyContent" class="collapsible-content">
-                <div class="method-card">
-                    <div class="method-header">
-                        <div class="method-header-content">
-                            <h4>Option 1: Download PDF Transcript</h4>
-                            <p>For personal records or to email directly to institutions</p>
-                        </div>
-                        <span class="free-badge">FREE</span>
-                    </div>
-                    <div class="method-body">
-                        <ol class="step-list">
-                            <li>
-                                Log in to the <a href="https://portal.yonsei.ac.kr" target="_blank">Yonsei Portal</a>
-                                <div class="step-path">Academic Information System → Grades → Exchange Student Grades</div>
-                            </li>
-                            <li>
-                                Your transcript will be displayed. You can download it as a PDF file.
-                                <div class="step-image">
-                                    <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_3.png" alt="Exchange Student Grades Screen">
-                                    <div class="step-image-caption">Exchange Student Grades menu location</div>
-                                </div>
-                            </li>
-                        </ol>
-                        <div class="step-note">
-                            <strong>Forgot your password?</strong> Please refer to <a href="https://portal.yonsei.ac.kr/ui/index.html" target="_blank">"RESET PW for SAY/YISS/WAY"</a> at the Portal Log-in page.
-                            <div class="step-image" style="margin-top: 10px; margin-bottom: 0;">
-                                <img src="https://summer.yonsei.ac.kr/_res/summer/img/Yonsei_PW_reset.png" alt="Password Reset Guide">
-                                <div class="step-image-caption">Password reset option location</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-        <div class="method-card">
-            <div class="method-header">
-                <div class="method-header-content">
-                    <h4>Option 2: Send Electronic Transcript to an Institution</h4>
-                    <p>For official submissions requiring verified digital documents</p>
-                </div>
-                <span class="paid-badge">₩3,000</span>
-            </div>
-            <div class="method-body">
-                <ol class="step-list">
-                    <li>
-                        Log in to the <a href="https://portal.yonsei.ac.kr" target="_blank">Yonsei Portal</a> and navigate to
-                        <div class="step-path">IT SERVICE > Online Transcripts & Certificates</div>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_1.PNG" alt="Step 1: Navigate to Online Transcripts">
-                        </div>
-                    </li>
-                    <li>
-                        If a pop-up appears requesting permission to operate the Electronic Certificate (PDF File) menu, click <strong>"허용 (Allow)"</strong>, then click <strong>"Order."</strong>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_2.PNG" alt="Step 2: Allow and Order">
-                        </div>
-                    </li>
-                    <li>
-                        After reviewing and agreeing to the terms, click <strong>"증명발급하기 (Issue Certificate)."</strong>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_3.PNG" alt="Step 3: Issue Certificate">
-                        </div>
-                    </li>
-                    <li>
-                        Select <strong>"ELECTRONIC CERTIFICATE (PDF File)."</strong>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_4.PNG" alt="Step 4: Select Electronic Certificate">
-                        </div>
-                    </li>
-                    <li>
-                        Click <strong>"Order."</strong>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_5.PNG" alt="Step 5: Click Order">
-                        </div>
-                    </li>
-                    <li>
-                        Select Degree: <strong>"Department of International Exchange"</strong> and click <strong>"Next."</strong>
-                        <div class="step-note" style="margin-top: 8px; margin-bottom: 8px;">
-                            ⚠️ Please verify your name in English and your student ID number ("Hakbun").
-                        </div>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_6.PNG" alt="Step 6: Select Department">
-                        </div>
-                    </li>
-                    <li>
-                        You will be automatically redirected to the Order Box. Click <strong>"Apply,"</strong> complete the required information, and finalize the payment of the issuance fee (₩3,000).
-                        <div class="step-note" style="margin-top: 8px; margin-bottom: 8px;">
-                            💳 If you use an overseas credit card, please select the appropriate payment option accordingly.
-                        </div>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_7.PNG" alt="Step 7: Apply and Pay">
-                        </div>
-                    </li>
-                    <li>
-                        After completing the payment, go to the <strong>"Unissued"</strong> section and choose <strong>"📧Email Transmission"</strong>. Input all the necessary information and click on <strong>"Send"</strong>.
-                        <div class="step-note" style="margin-top: 8px; margin-bottom: 8px;">
-                            ⏳ Electronic transcript issuance via email takes 5-7 working days to process.
-                        </div>
-                        <div class="step-image">
-                            <img src="https://summer.yonsei.ac.kr/_res/summer/img/transcript_8.PNG" alt="Step 8: Email Transmission">
-                        </div>
-                    </li>
-                </ol>
-                <div class="step-note">
-                    <strong>Forgot your password?</strong> Please refer to <a href="https://portal.yonsei.ac.kr/ui/index.html" target="_blank">"RESET PW for SAY/YISS/WAY"</a> at the Portal Log-in page.<br>
-                    <strong>Guide to Allowing Local Network Accedss </strong> <a href="https://summer.yonsei.ac.kr/_res/summer/etc/Guide_to_Allowing_Local_Network_Access.pdf" target="_blank"><strong>[CLICK]</strong></a>
-                </div>
-            </div>
+            <a href="softcopy.html">Soft Copy Guide →</a>
         </div>
-    </div>
-</div>    
-                
+
         <!-- Hard Copy Request Card -->
         <div class="card">
             <div class="card-header">
@@ -491,7 +303,6 @@
                             <label for="deliveryDomestic">
                                 <div class="type-icon">🇰🇷</div>
                                 <div class="type-name">Domestic (Korea)</div>
-                                <div class="type-name bilingual"></div>
                                 <div class="type-price">₩4,000</div>
                                 <div class="type-note">base fee</div>
                             </label>
@@ -501,7 +312,6 @@
                             <label for="deliveryInternational">
                                 <div class="type-icon">🌍</div>
                                 <div class="type-name">International (DHL)</div>
-                                <div class="type-name bilingual"></div>
                                 <div class="type-price">₩50,000</div>
                                 <div class="type-note">base fee</div>
                             </label>
@@ -583,7 +393,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="studentId">Student ID<span class="required">*</span></label>
+                            <label for="studentId">Student ID <span class="required">*</span></label>
                             <input type="text" id="studentId" name="studentId" class="form-control" required placeholder="e.g., 2024123456">
                             <p class="form-hint"><strong>YYYY: Program Year</strong><br>
                             Please enter your 10-digit YISS or WAY student ID number.<br>
@@ -601,6 +411,10 @@
                     <!-- Delivery Information -->
                     <div class="form-section">
                         <h3 class="form-section-title">Delivery Information</h3>
+                        <div id="copiesAllocationDisplay" class="copies-allocation">
+                            <span class="copies-allocation-label">📦 Copies Distribution:</span>
+                            <span class="copies-allocation-value">1 / 1 copies allocated</span>
+                        </div>
                         <div id="deliveryContainer">
                             <!-- Delivery blocks will be dynamically added here -->
                         </div>
@@ -629,10 +443,10 @@
                                 <label for="paymentWire">
                                     <div class="payment-option-header">
                                         <div class="icon">🏦</div>
-                                        <h4>Bank Transfer</h4>
+                                        <h4>Wire Transfer</h4>
                                     </div>
                                     <div class="payment-option-body">
-                                        Direct bank transfer in KRW. Recommended for domestic payments.
+                                        Direct wire transfer in KRW. Recommended for domestic payments.
                                     </div>
                                 </label>
                             </div>
@@ -644,18 +458,18 @@
                                 Click the button below to make your payment, then enter the Payment ID:
                             </p>
                             <div class="flywire-links">
-                                <a href="https://payment.demo.flywire.com/pay/payment?recipient=YOS" target="_blank" class="flywire-link" id="flywireLinkYISS">
+                                <a href="https://payment.demo.flywire.com/pay/payment?recipient=YOS" target="_blank" class="flywire-link">
                                     <span class="program-name">YISS Program</span>
                                     Pay with Flywire →
                                 </a>
-                                <a href="https://payment.demo.flywire.com/pay/payment?recipient=YON" target="_blank" class="flywire-link" id="flywireLinkWAY">
+                                <a href="https://payment.demo.flywire.com/pay/payment?recipient=YON" target="_blank" class="flywire-link">
                                     <span class="program-name">WAY Program</span>
                                     Pay with Flywire →
                                 </a>
                             </div>
                             <div class="form-group" style="margin-top: 16px; margin-bottom: 0;">
                                 <label for="transferRef">Flywire Payment ID <span class="required">*</span></label>
-                                <input type="text" id="transferRef" name="transferRef" class="form-control" placeholder="e.g., summer: YNTXXXXXXXXX/ winter: YNYXXXXXXXXX" required>
+                                <input type="text" id="transferRef" name="transferRef" class="form-control" placeholder="e.g., YISS: YNTXXXXXXXXX / WAY: YNYXXXXXXXXX">
                                 <p class="form-hint">You'll receive this Payment ID after completing Flywire payment</p>
                             </div>
                         </div>
@@ -720,8 +534,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="depositorName">Depositor Name<span class="required">*</span></label>
-                                <input type="text" id="depositorName" name="depositorName" class="form-control" placeholder="Name used for bank transfer">
+                                <label for="depositorName">Depositor Name <span class="required">*</span></label>
+                                <input type="text" id="depositorName" name="depositorName" class="form-control" placeholder="Name used for wire transfer">
                             </div>
 
                             <div class="form-group" style="margin-bottom: 0;">
@@ -815,7 +629,24 @@
         </footer>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-modal-content">
+            <div class="success-icon">✓</div>
+            <h2>Request Submitted!</h2>
+            <p>Your transcript request has been successfully received.</p>
+            <p>We will process your request once payment is confirmed.</p>
+            <div class="email-note">
+                📧 A confirmation email has been sent to your email address.
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted);">Processing time: 5-7 business days</p>
+            <button class="success-modal-btn" onclick="closeSuccessModal()">Close</button>
+        </div>
+    </div>
+
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+    <script>
         // Configuration
         const CONFIG = {
             googleScriptUrl: 'https://script.google.com/macros/s/AKfycbzfLLxA5rrk3cDE45WRgfYMnIkr8hhX1st7WoudMYPbp1ZC5dV3x6sERGpIdaV9TbrA/exec',
@@ -835,8 +666,7 @@
             copies: 1,
             destinations: 1,
             paymentMethod: 'flywire',
-            uploadedFile: null,
-            paymentVerified: false
+            uploadedFile: null
         };
 
         // DOM Elements
@@ -881,8 +711,6 @@
             successAlert: document.getElementById('successAlert'),
             errorAlert: document.getElementById('errorAlert'),
             errorMessage: document.getElementById('errorMessage'),
-            verifyRefBtn: document.getElementById('verifyRefBtn'),
-            verifyStatus: document.getElementById('verifyStatus'),
             privacyConsent: document.getElementById('privacyConsent')
         };
 
@@ -905,17 +733,45 @@
             };
         }
 
+        // Generate options for copies selector with dynamic limit
+        function generateCopiesOptions(selectedValue, maxAllowed) {
+            let options = '';
+            for (let i = 1; i <= maxAllowed; i++) {
+                options += `<option value="${i}" ${i === selectedValue ? 'selected' : ''}>${i}</option>`;
+            }
+            return options;
+        }
+        
+        // Calculate remaining copies (not allocated to any destination)
+        function getRemainingCopies() {
+            let totalAllocated = 0;
+            for (let i = 1; i <= state.destinations; i++) {
+                const select = document.querySelector(`[name="destCopies_${i}"]`);
+                if (select) {
+                    totalAllocated += parseInt(select.value) || 1;
+                }
+            }
+            return state.copies - totalAllocated;
+        }
+        
+        // Get max allowed for a specific destination (current value + remaining)
+        function getMaxAllowedFor(destIndex) {
+            const select = document.querySelector(`[name="destCopies_${destIndex}"]`);
+            const currentValue = select ? (parseInt(select.value) || 1) : 1;
+            const remaining = getRemainingCopies();
+            return currentValue + remaining;
+        }
+
         // Create delivery block HTML
         function createDeliveryBlock(index) {
-            // 기본값: 각 destination에 1개씩 배정
             return `
             <div class="delivery-block" data-index="${index}">
                 <div class="delivery-block-header">
                     <h4>📍 Destination ${index}</h4>
                     <div class="dest-copies-selector">
                         <label>Copies:</label>
-                        <select name="destCopies_${index}" onchange="updateCopiesAllocation()">
-                            ${generateCopiesOptions(1)}
+                        <select name="destCopies_${index}" onchange="handleCopiesChange(${index})">
+                            <option value="1" selected>1</option>
                         </select>
                     </div>
                 </div>
@@ -936,15 +792,24 @@
             </div>`;
         }
         
-        // Generate options for copies selector
-        function generateCopiesOptions(selectedValue) {
-            let options = '';
-            for (let i = 1; i <= state.copies; i++) {
-                options += `<option value="${i}" ${i === selectedValue ? 'selected' : ''}>${i}</option>`;
-            }
-            return options;
+        // Handle copies change
+        function handleCopiesChange(destIndex) {
+            updateAllCopiesDropdowns();
+            updateCopiesAllocation();
         }
         
+        // Update all copies dropdowns with current limits
+        function updateAllCopiesDropdowns() {
+            for (let i = 1; i <= state.destinations; i++) {
+                const select = document.querySelector(`[name="destCopies_${i}"]`);
+                if (select) {
+                    const currentValue = parseInt(select.value) || 1;
+                    const maxAllowed = getMaxAllowedFor(i);
+                    select.innerHTML = generateCopiesOptions(currentValue, maxAllowed);
+                }
+            }
+        }
+
         // Calculate total allocated copies
         function getTotalAllocatedCopies() {
             let total = 0;
@@ -956,57 +821,33 @@
             }
             return total;
         }
-        
+
         // Update copies allocation display
         function updateCopiesAllocation() {
             const allocated = getTotalAllocatedCopies();
-            const remaining = state.copies - allocated;
             const display = document.getElementById('copiesAllocationDisplay');
             
             if (display) {
                 const valueSpan = display.querySelector('.copies-allocation-value');
-                valueSpan.textContent = `${allocated} / ${state.copies} copies allocated`;
                 
                 valueSpan.classList.remove('warning', 'success');
-                if (allocated > state.copies) {
-                    valueSpan.classList.add('warning');
-                    valueSpan.textContent = `⚠️ ${allocated} / ${state.copies} - Exceeds total!`;
-                } else if (allocated === state.copies) {
+                if (allocated === state.copies) {
                     valueSpan.classList.add('success');
                     valueSpan.textContent = `✓ ${allocated} / ${state.copies} copies allocated`;
-                }
-            }
-            
-            // Update max values in selects
-            updateCopiesSelectOptions();
-        }
-        
-        // Update copies select options based on remaining
-        function updateCopiesSelectOptions() {
-            for (let i = 1; i <= state.destinations; i++) {
-                const select = document.querySelector(`[name="destCopies_${i}"]`);
-                if (select) {
-                    const currentValue = parseInt(select.value) || 1;
-                    select.innerHTML = generateCopiesOptions(currentValue);
+                } else if (allocated < state.copies) {
+                    valueSpan.textContent = `${allocated} / ${state.copies} copies allocated (${state.copies - allocated} remaining)`;
+                } else {
+                    // This shouldn't happen with new logic, but just in case
+                    valueSpan.classList.add('warning');
+                    valueSpan.textContent = `⚠️ ${allocated} / ${state.copies} - Exceeds total!`;
                 }
             }
         }
 
-        // Update delivery blocks based on destination count
+        // Update delivery blocks
         function updateDeliveryBlocks() {
             const container = elements.deliveryContainer;
             const currentBlocks = container.querySelectorAll('.delivery-block').length;
-            
-            // Add or remove allocation display
-            let allocationDisplay = document.getElementById('copiesAllocationDisplay');
-            if (state.destinations > 0 && !allocationDisplay) {
-                container.insertAdjacentHTML('beforebegin', `
-                    <div id="copiesAllocationDisplay" class="copies-allocation">
-                        <span class="copies-allocation-label">📦 Copies Distribution:</span>
-                        <span class="copies-allocation-value">${state.destinations} / ${state.copies} copies allocated</span>
-                    </div>
-                `);
-            }
             
             if (state.destinations > currentBlocks) {
                 for (let i = currentBlocks + 1; i <= state.destinations; i++) {
@@ -1019,13 +860,15 @@
                 }
             }
             
-            // Update allocation display
-            updateCopiesAllocation();
+            // Update all dropdowns with new limits
+            setTimeout(() => {
+                updateAllCopiesDropdowns();
+                updateCopiesAllocation();
+            }, 10);
         }
 
         // Update price display
-                function updatePrice() {
-            // ★ copies가 destinations보다 적으면 destinations 수량으로 맞추기
+        function updatePrice() {
             if (state.copies < state.destinations) {
                 state.copies = state.destinations;
             }
@@ -1061,75 +904,15 @@
             elements.deliveryTypeValue.value = state.deliveryType;
             elements.totalAmount.value = calc.total;
             
-            // ★ copies 최소값을 destinations로 설정
             elements.copiesMinus.disabled = state.copies <= state.destinations;
             elements.copiesPlus.disabled = state.copies >= CONFIG.maxCopies;
             elements.destMinus.disabled = state.destinations <= CONFIG.minQuantity;
             elements.destPlus.disabled = state.destinations >= CONFIG.maxDestinations;
         
             updateDeliveryBlocks();
-            
-            // Update copies allocation after delivery blocks are updated
-            setTimeout(() => updateCopiesAllocation(), 10);
         }
 
-        // Toggle collapsible section
-        function toggleSection(contentId, headerElement) {
-            const content = document.getElementById(contentId);
-            const icon = headerElement.querySelector('.collapse-icon');
-            const intro = document.getElementById('softCopyIntro');
-            
-            content.classList.toggle('expanded');
-            icon.classList.toggle('rotated');
-            
-            if (intro) {
-                intro.classList.toggle('visible');
-            }
-        }
-
-        // Verify Payment ID
-        async function verifyTransferRef() {
-            const transferRef = elements.transferRef.value.trim();
-            const program = document.getElementById('program').value;
-            const btn = elements.verifyRefBtn;
-            const status = elements.verifyStatus;
-            
-            if (!transferRef) {
-                status.innerHTML = '<span style="color: var(--error-red);">❌ Please enter Payment ID</span>';
-                return;
-            }
-            
-            if (!program) {
-                status.innerHTML = '<span style="color: var(--error-red);">❌ Please select program first</span>';
-                return;
-            }
-            
-            btn.disabled = true;
-            btn.textContent = 'Verifying...';
-            status.innerHTML = '<span style="color: var(--text-muted);">⏳ Checking...</span>';
-            
-            try {
-                const url = CONFIG.googleScriptUrl + '?action=verify&ref=' + encodeURIComponent(transferRef) + '&program=' + encodeURIComponent(program);
-                const response = await fetch(url);
-                const result = await response.json();
-                
-                if (result.verified) {
-                    status.innerHTML = `<span style="color: var(--success-green);">✅ Verified - ${result.amount} ${result.currency}</span>`;
-                    state.paymentVerified = true;
-                } else {
-                    status.innerHTML = `<span style="color: var(--error-red);">❌ ${result.message || 'Payment not found'}</span>`;
-                    state.paymentVerified = false;
-                }
-            } catch (error) {
-                console.error('Verification error:', error);
-                status.innerHTML = '<span style="color: var(--warning-orange);">⚠️ Could not verify automatically. We will verify manually.</span>';
-            }
-            
-            btn.disabled = false;
-            btn.textContent = 'Verify Payment';
-        }
-
-        // Event Listeners
+        // Event Listeners - Delivery Type
         elements.deliveryDomestic.addEventListener('change', () => {
             state.deliveryType = 'domestic';
             updatePrice();
@@ -1139,8 +922,8 @@
             state.deliveryType = 'international';
             updatePrice();
         });
-        
-        // ★ copiesMinus - destinations 이하로 못 내림
+
+        // Event Listeners - Quantity
         elements.copiesMinus.addEventListener('click', () => {
             if (state.copies > state.destinations) {
                 state.copies--;
@@ -1155,7 +938,6 @@
             }
         });
         
-        // ★ destMinus 추가!
         elements.destMinus.addEventListener('click', () => {
             if (state.destinations > CONFIG.minQuantity) {
                 state.destinations--;
@@ -1163,7 +945,6 @@
             }
         });
         
-        // ★ destPlus - copies도 같이 증가
         elements.destPlus.addEventListener('click', () => {
             if (state.destinations < CONFIG.maxDestinations) {
                 state.destinations++;
@@ -1257,14 +1038,21 @@
             }
             return deliveries;
         }
-        
+
         // Validate copies allocation
         function validateCopiesAllocation() {
             const allocated = getTotalAllocatedCopies();
-            if (allocated !== state.copies) {
+            if (allocated < state.copies) {
+                const remaining = state.copies - allocated;
                 return {
                     valid: false,
-                    message: `Total copies allocated (${allocated}) must equal the number of copies ordered (${state.copies}).`
+                    message: `You have ${remaining} unallocated cop${remaining > 1 ? 'ies' : 'y'}.\n\nPlease distribute all ${state.copies} copies across your destinations before submitting.`
+                };
+            }
+            if (allocated > state.copies) {
+                return {
+                    valid: false,
+                    message: `Total copies allocated (${allocated}) exceeds the number of copies ordered (${state.copies}).\n\nPlease adjust your allocation.`
                 };
             }
             return { valid: true };
@@ -1274,14 +1062,12 @@
         elements.form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Check privacy consent
             if (!elements.privacyConsent.checked) {
                 alert('Please agree to the personal information collection terms to proceed.');
                 elements.privacyConsent.focus();
                 return;
             }
             
-            // Check copies allocation
             const copiesValidation = validateCopiesAllocation();
             if (!copiesValidation.valid) {
                 alert(copiesValidation.message);
@@ -1318,7 +1104,6 @@
                 paymentMethod: state.paymentMethod,
                 transferRef: elements.transferRef.value.trim(),
                 depositorName: elements.depositorName.value.trim(),
-                paymentVerified: state.paymentVerified,
                 privacyConsent: true,
                 notes: document.getElementById('notes').value.trim()
             };
@@ -1336,107 +1121,78 @@
             }
         });
 
-            async function submitForm(formData) {
-        try {
-            // 방법 1: iframe을 통한 제출 (가장 안정적)
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = CONFIG.googleScriptUrl;
-            form.target = 'hidden_iframe';
-            
-            // formData를 hidden input으로 변환
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'data';
-            input.value = JSON.stringify(formData);
-            form.appendChild(input);
-            
-            document.body.appendChild(form);
-            form.submit();
-            document.body.removeChild(form);
-            
-            // 제출 후 처리 (iframe은 응답을 받지 못하므로 일정 시간 후 성공 처리)
-            // 실제 저장 여부는 이메일 수신으로 확인
-            setTimeout(() => {
-                showSuccessModal();
-                resetForm();
-            }, 1500);
-    
-        } catch (error) {
-            console.error('Submission error:', error);
-            showError(error.message || 'Please try again or contact us.');
+        async function submitForm(formData) {
+            try {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = CONFIG.googleScriptUrl;
+                form.target = 'hidden_iframe';
+                
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'data';
+                input.value = JSON.stringify(formData);
+                form.appendChild(input);
+                
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
+                
+                setTimeout(() => {
+                    showSuccessModal();
+                    resetForm();
+                }, 1500);
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                showError(error.message || 'Please try again or contact us.');
+            }
         }
-    }
-    
-    function showSuccessModal() {
-        const modal = document.getElementById('successModal');
-        if (modal) {
-            modal.classList.add('visible');
-        } else {
-            // fallback: alert 사용
-            alert('✅ Request submitted successfully!\n\nA confirmation email will be sent to your email address.');
+
+        function showSuccessModal() {
+            document.getElementById('successModal').classList.add('visible');
         }
-    }
-    
-    function showError(message) {
-        const errorAlert = document.getElementById('errorAlert');
-        const errorMessage = document.getElementById('errorMessage');
-        
-        if (errorAlert && errorMessage) {
-            errorMessage.textContent = message;
-            errorAlert.classList.add('visible');
-        } else {
-            alert('❌ Submission failed: ' + message);
-        }
-        
-        elements.submitBtn.disabled = false;
-        elements.submitBtn.innerHTML = '<span>Submit Request</span>';
-    }
-    
-    function resetForm() {
-        elements.form.reset();
-        state.copies = 1;
-        state.destinations = 1;
-        state.deliveryType = 'international';
-        state.uploadedFile = null;
-        state.paymentVerified = false;
-        elements.deliveryInternational.checked = true;
-        elements.paymentFlywire.checked = true;
-        if (elements.verifyStatus) elements.verifyStatus.innerHTML = '';
-        updatePrice();
-        updatePaymentMethod();
-        elements.fileUpload.classList.remove('has-file');
-        elements.filePreview.classList.remove('visible');
-        elements.submitBtn.disabled = false;
-        elements.submitBtn.innerHTML = '<span>Submit Request</span>';
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
 
         function closeSuccessModal() {
-        document.getElementById('successModal').classList.remove('visible');
+            document.getElementById('successModal').classList.remove('visible');
+        }
+
+        function showError(message) {
+            const errorAlert = document.getElementById('errorAlert');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (errorAlert && errorMessage) {
+                errorMessage.textContent = message;
+                errorAlert.classList.add('visible');
+            } else {
+                alert('❌ Submission failed: ' + message);
+            }
+            
+            elements.submitBtn.disabled = false;
+            elements.submitBtn.innerHTML = '<span>Submit Request</span>';
+        }
+
+        function resetForm() {
+            elements.form.reset();
+            state.copies = 1;
+            state.destinations = 1;
+            state.deliveryType = 'international';
+            state.uploadedFile = null;
+            elements.deliveryInternational.checked = true;
+            elements.paymentFlywire.checked = true;
+            updatePrice();
+            updatePaymentMethod();
+            elements.fileUpload.classList.remove('has-file');
+            elements.filePreview.classList.remove('visible');
+            elements.submitBtn.disabled = false;
+            elements.submitBtn.innerHTML = '<span>Submit Request</span>';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Initialize
         updatePrice();
         updatePaymentMethod();
     </script>
-
-   <!-- Success Modal -->
-<div id="successModal" class="success-modal">
-    <div class="success-modal-content">
-        <div class="success-icon">✓</div>
-        <h2>Request Submitted!</h2>
-        <h3 style="color: var(--text-primary); font-size: 18px; margin-bottom: 16px;"></h3>
-        <p>Your transcript request has been successfully received.</p>
-        <p>We will process your request once payment is confirmed.</p>
-        <div class="email-note">
-            📧 A confirmation email has been sent to your email address.
-        </div>
-        <p style="font-size: 13px; color: var(--text-muted);">Processing time: 5-7 business days</p>
-        <button class="success-modal-btn" onclick="closeSuccessModal()">Close</button>
-    </div>
-</div>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
